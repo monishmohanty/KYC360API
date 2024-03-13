@@ -1,8 +1,8 @@
-# Project Name
+# KYC360
 
 ## Project Overview
 
-This project is a sample implementation of an ASP.NET Core Web API for managing entities, such as individuals, in a database. The API allows users to perform CRUD (Create, Read, Update, Delete) operations on entities and includes features such as searching and filtering.
+This project is a sample implementation of an ASP.NET Core Web API for managing entities, such as individuals, in a database. The API allows users to perform CRUD (Create, Read, Update, Delete) operations on entities and includes features such as searching and filtering. Additionaly it also performs both the bonus challenges which includes paging, sorting and retry, backoff mechanism with logging.
 
 ## Retry and Backoff Strategy for Database Write Operations
 
@@ -54,13 +54,12 @@ The implementation of retry and backoff strategy for database write operations i
 2. **Navigate to Project Directory**: `cd <project-directory>`
 3. **Restore Dependencies**: `dotnet restore`
 4. **Run the Application**: `dotnet run`
-5. **Access the API Documentation**: Open a web browser and go to `https://localhost:<port>/swagger` to view the Swagger UI documentation.
 
 ## Usage
 
 1. **API Endpoints**: Interact with the API using endpoints such as `/entities`, `/entities/{id}`, `/entities/search`, `/entities/filter`, etc.
-2. **Testing**: Utilize tools like Postman to send HTTP requests and test different functionalities.
-3. **Integration**: Integrate the API with frontend applications or other systems for entity management.
+2. **Testing**: Utilize tools like Postman to send HTTP requests and test different functionalities.The http port is set to number 5077
+3. **Example commands**:GET http://localhost:5077/entities, GET http://localhost:5077/entities?pageNumber=1&pageSize=10&sortBy=Id&sortOrder=asc, GET http://localhost:5077/entities/search?query=Monish
 
 ## Contribution Guidelines
 
