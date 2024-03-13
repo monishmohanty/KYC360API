@@ -7,12 +7,12 @@ using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Serilog for logging
+
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateLogger();
 
-// Add services to the container.
+
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -23,7 +23,7 @@ builder.Services.AddSingleton<EntityService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -37,8 +37,8 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-// Route handler for the root URL ("/")
-app.MapGet("/", () => "Hello from ASP.NET Core!");  // This returns a simple "Hello from ASP.NET Core!" message
+
+app.MapGet("/", () => "Hello it's working :)");  
 
 app.MapGet("/weatherforecast", () =>
 {

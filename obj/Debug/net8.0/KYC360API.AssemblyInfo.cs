@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KYC360API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+954799f21317731214024e3a1e74fd312c811505")]
 [assembly: System.Reflection.AssemblyProductAttribute("KYC360API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KYC360API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

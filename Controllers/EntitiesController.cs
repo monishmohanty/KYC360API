@@ -13,7 +13,7 @@ public class EntitiesController : ControllerBase
         _entityService = entityService;
     }
 
-    // GET /entities
+    
     [HttpGet]
     public ActionResult<IEnumerable<Entity>> GetEntities(
         [FromQuery] int pageNumber = 1,
@@ -21,20 +21,20 @@ public class EntitiesController : ControllerBase
         [FromQuery] string sortBy = "Id",
         [FromQuery] string sortOrder = "asc")
     {
-        // Get all entities from the service
+        
         var entities = _entityService.GetAllEntities();
 
-        // Apply sorting
+        
         entities = SortEntities(entities, sortBy, sortOrder);
 
-        // Calculate total number of pages
+        
         int totalItems = entities.Count();
         int totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
 
-        // Apply pagination
+        
         entities = entities.Skip((pageNumber - 1) * pageSize).Take(pageSize);
 
-        // Add pagination metadata to response headers
+        
         Response.Headers.Add("X-Total-Items", totalItems.ToString());
         Response.Headers.Add("X-Total-Pages", totalPages.ToString());
 
@@ -43,18 +43,18 @@ public class EntitiesController : ControllerBase
 
     private IEnumerable<Entity> SortEntities(IEnumerable<Entity> entities, string sortBy, string sortOrder)
     {
-        // Default sorting by Id ascending if invalid sortBy parameter
+        
         if (string.IsNullOrEmpty(sortBy) || typeof(Entity).GetProperty(sortBy) == null)
             sortBy = "Id";
 
-        // Sort the entities based on sortBy and sortOrder parameters
+        
         if (sortOrder.ToLower() == "desc")
             return entities.OrderByDescending(e => e.GetType().GetProperty(sortBy).GetValue(e, null));
         else
             return entities.OrderBy(e => e.GetType().GetProperty(sortBy).GetValue(e, null));
     }
 
-    // GET /entities/{id}
+    
     [HttpGet("{id}")]
     public ActionResult<Entity> GetEntity(string id)
     {
@@ -66,7 +66,7 @@ public class EntitiesController : ControllerBase
         return Ok(entity);
     }
 
-    // POST /entities
+    
     [HttpPost]
     public ActionResult<Entity> CreateEntity(Entity entity)
     {
@@ -74,7 +74,7 @@ public class EntitiesController : ControllerBase
         return CreatedAtAction(nameof(GetEntity), new { id = entity.Id }, entity);
     }
 
-    // PUT /entities/{id}
+    
     [HttpPut("{id}")]
     public IActionResult UpdateEntity(string id, Entity entity)
     {
@@ -86,7 +86,7 @@ public class EntitiesController : ControllerBase
         return NoContent();
     }
 
-    // DELETE /entities/{id}
+    
     [HttpDelete("{id}")]
     public IActionResult DeleteEntity(string id)
     {
@@ -94,7 +94,7 @@ public class EntitiesController : ControllerBase
         return NoContent();
     }
 
-    // GET /entities/search?query={query}
+    
     [HttpGet("search")]
     public ActionResult<IEnumerable<Entity>> SearchEntities([FromQuery] string query)
     {
@@ -118,7 +118,7 @@ public class EntitiesController : ControllerBase
         return Ok(entities);
     }
 
-    // GET /entities/filter?gender={gender}&startDate={startDate}&endDate={endDate}&countries={countries}
+    
     [HttpGet("filter")]
     public ActionResult<IEnumerable<Entity>> FilterEntities(
         [FromQuery] string gender,
